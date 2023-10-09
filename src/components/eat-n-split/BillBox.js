@@ -1,4 +1,4 @@
-import Input from '../components/UI/Input';
+import Input from "../UI/Input";
 import React, { useState } from "react";
 
 function BillBox({ selectedUser, updateFriendBalance }) {
@@ -24,20 +24,22 @@ function BillBox({ selectedUser, updateFriendBalance }) {
   };
 
   const handleBillChange = (e) => {
-    setBillValue(e.target.value);
+    setBillValue(+e.target.value);
   };
 
   const handleMyExpenseChange = (e) => {
-    setMyExpense(e.target.value);
+    //MYEXPENSE IS THE OLD STATE VALUE, E.TARGET.VALUE IS THE NEW
+    setMyExpense(
+      Math.abs(+e.target.value) < billValue
+        ? Math.abs(+e.target.value)
+        : myExpense
+    );
   };
-  const handlePersonPayingChange = (e) => setPersonPaying(+e.target.value); //Biggest problem came from here (Did not convert to number initially)
+  const handlePersonPaying = (e) => setPersonPaying(+e.target.value); //Biggest problem came from here (Did not convert to number initially)
 
   const handleSplitBill = () => {
-    updateFriendBalance(
-      selectedUser.id,
-      personPaying === 1 ? friendExpense : -friendExpense
-      );
-      resetValues();
+    updateFriendBalance(personPaying === 1 ? friendExpense : -friendExpense);
+    resetValues();
   };
 
   const USERNAME = selectedUser.name;
@@ -63,7 +65,7 @@ function BillBox({ selectedUser, updateFriendBalance }) {
         </div> */}
         <div className="flex gap-5 justify-around">
           <label>Who's paying for the bill?</label>
-          <select value={personPaying} onChange={handlePersonPayingChange}>
+          <select value={personPaying} onChange={handlePersonPaying}>
             <option value={1}>You</option>
             <option value={2}>{USERNAME}</option>
           </select>
@@ -79,5 +81,3 @@ function BillBox({ selectedUser, updateFriendBalance }) {
 }
 
 export default BillBox;
-
-   

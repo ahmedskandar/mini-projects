@@ -42,7 +42,7 @@ function UserItem({
           } button-primary self-center`}
           onClick={handleButtonClick}
         >
-          Select
+          {selectedUserId === id ? "Close" : "Select"}
         </button>
       </div>
     </li>

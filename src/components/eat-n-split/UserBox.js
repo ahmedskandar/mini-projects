@@ -20,12 +20,12 @@ function UserBox({
         handleSelectButtonClicked={handleSelectButtonClicked}
       />
       <button
-        className={`button-primary ${
+        className={`${
           isAddFriendBtnClicked && "bg-yellow-700"
-        } self-center`}
+        } button-primary self-center`}
         onClick={handleAddFriendClicked}
       >
-        Add friend
+        {!isAddFriendBtnClicked ? "Add friend" : "Close"}
       </button>
       {isAddFriendBtnClicked && <AddUser handleAddFriend={handleAddFriend} />}
     </div>
