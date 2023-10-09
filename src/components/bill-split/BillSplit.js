@@ -3,7 +3,7 @@ import BillBox from "./BillBox";
 import UserBox from "./UserBox";
 import SectionTitle from "../UI/SectionTitle";
 
-const Index = () => {
+const BillSplit = () => {
   const USER_DATA = [
     {
       id: 1,
@@ -47,7 +47,7 @@ const Index = () => {
   const selectedUser = userData.find((user) => selectedUserId === user.id);
   return (
     <section>
-      <SectionTitle>EAT-N-SPLIT</SectionTitle>
+      <SectionTitle>BILL SPLIT</SectionTitle>
       <div className=" w-10/12 mx-auto flex flex-col gap-10 lg:gap-0 lg:flex-row lg:w-3/4">
         <UserBox
           handleAddFriend={handleAddFriend}
@@ -70,4 +70,4 @@ const Index = () => {
   );
 };
 
-export default Index;
+export default BillSplit;

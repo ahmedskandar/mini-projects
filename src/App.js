@@ -1,7 +1,14 @@
-import Index from "./components/eat-n-split/Index";
+import BillSplit from "./components/bill-split/BillSplit";
+import UseMovies from "./components/use-movies/UseMovies";
 
 function App() {
-  return <Index />;
+  // alert("Welcome to my mini-projects")
+  return (
+    <>
+      <BillSplit />
+      <UseMovies />
+    </>
+  );
 }
 
 export default App;
