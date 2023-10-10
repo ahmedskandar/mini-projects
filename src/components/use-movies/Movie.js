@@ -93,8 +93,8 @@ const Movie = ({ movieName, onMovieNumbersChange }) => {
     };
 
     fetchMovies();
-  }, [movieName]);
-  
+  }, [movieName, onMovieNumbersChange]);
+
   return (
     <main className="flex flex-col mt-5  text-white lg:gap-5 lg:flex-row">
       {!error && (
