@@ -1,3 +1,14 @@
-const KEY = "f84fc31d";
+const KEY = "7cc71b04";
 export const getMovie = (query) =>
   `http://www.omdbapi.com/?apikey=${KEY}&s=${query}`;
+
+export const getSelectedMovie = (id) =>
+  `https://www.omdbapi.com/?i=${id}&apikey=${KEY}`;
+
+export const starConfig = {
+  size: 30,
+  count: 10,
+  isHalf: false,
+  color: "white",
+  activeColor: "yellow",
+};

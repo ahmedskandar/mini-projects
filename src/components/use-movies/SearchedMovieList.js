@@ -1,13 +1,18 @@
 import React from "react";
 import SearchedMovieItem from "./SearchedMovieItem";
 
-const SearchedMovieList = ({ movies }) => {
+const SearchedMovieList = ({ movies, onSelectedMovieIdChange }) => {
   return (
     <ul>
-      {movies.map(({ name, year, image }, index) => (
-        <React.Fragment key={index}>
-          <SearchedMovieItem name={name} year={year} image={image} />
-        </React.Fragment>
+      {movies.map(({ name, year, image, id }) => (
+        <SearchedMovieItem
+          key={id}
+          name={name}
+          year={year}
+          onSelectedMovieIdChange={onSelectedMovieIdChange}
+          image={image}
+          id={id}
+        />
       ))}
     </ul>
   );

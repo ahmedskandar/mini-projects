@@ -1,10 +1,20 @@
 import React from "react";
 
-const SearchedMovieItem = ({name, year, image}) => {
+const SearchedMovieItem = ({
+  name,
+  year,
+  image,
+  id,
+  onSelectedMovieIdChange,
+}) => {
+
+  const handleMovieSelect = () => {
+    onSelectedMovieIdChange(id)
+  }
+
   return (
-    <li className="relative flex cursor-pointer p-5 gap-10 bg-black/40">
+    <li onClick={handleMovieSelect} className="relative flex cursor-pointer p-5 gap-10 bg-black/40">
       {/* <img src="" alt="" /> */}
-      
 
       <img src={image} className="h-16" alt="" />
 

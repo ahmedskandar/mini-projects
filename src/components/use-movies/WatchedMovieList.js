@@ -1,7 +1,8 @@
 import React from "react";
 import WatchedMovieItem from "./WatchedMovieItem";
 
-const WatchedMovieList = ({ movies }) => {
+const WatchedMovieList = () => {
+  const movies = []
   return (
     <ul>
       {movies.map((movie, index) => (
