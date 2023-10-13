@@ -2,9 +2,14 @@ import React, { useState } from "react";
 import ReactStars from "react-rating-stars-component";
 import { starConfig } from "../util/Constants";
 
-const SelectedMovie = ({ selectedMovie }) => {
+const SelectedMovie = ({
+  selectedMovie,
+  setWatchedMovies,
+  onClearSelectedMovie,
+}) => {
   //Name, releaseData, duration, genre, rating
   const {
+    id,
     name,
     releaseDate,
     duration,
@@ -18,6 +23,19 @@ const SelectedMovie = ({ selectedMovie }) => {
   const [starValue, setStarValue] = useState(0);
   const handleStarChange = (value) => {
     setStarValue(value);
+  };
+  const handleAddMovie = () => {
+    onClearSelectedMovie()
+    setWatchedMovies((prevMovies) => [
+      ...prevMovies,
+      {
+        id,
+        starValue,
+        duration,
+        image,
+        name,
+      },
+    ]);
   };
 
   return (
@@ -40,7 +58,10 @@ const SelectedMovie = ({ selectedMovie }) => {
           <span className="text-xl">{starValue}</span>
         </div>
         {starValue !== 0 && (
-          <button className="bg-gradient-to-b mb-3 from-blue-700 px-4 py-2 rounded-md to-blue-600 hover:from-blue-900 hover:to-blue-800">
+          <button
+            onClick={handleAddMovie}
+            className="bg-gradient-to-b mb-3 from-blue-700 px-4 py-2 rounded-md to-blue-600 hover:from-blue-900 hover:to-blue-800"
+          >
             Add to list
           </button>
         )}

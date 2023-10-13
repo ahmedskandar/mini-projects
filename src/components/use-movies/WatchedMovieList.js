@@ -1,14 +1,15 @@
 import React from "react";
 import WatchedMovieItem from "./WatchedMovieItem";
 
-const WatchedMovieList = () => {
-  const movies = []
+const WatchedMovieList = ({ watchedMovies, onRemoveWatchedMovie }) => {
   return (
     <ul>
-      {movies.map((movie, index) => (
-        <React.Fragment key={index}>
-          <WatchedMovieItem />
-        </React.Fragment>
+      {watchedMovies.map((movie, index) => (
+        <WatchedMovieItem
+          onRemoveWatchedMovie={onRemoveWatchedMovie}
+          movie={movie}
+          key={index}
+        />
       ))}
     </ul>
   );

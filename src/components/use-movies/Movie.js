@@ -14,12 +14,23 @@ const Movie = ({ movieName, onMovieNumbersChange }) => {
   const [watchedMovies, setWatchedMovies] = useState([]);
   const [selectedMovie, setSelectedMovie] = useState({});
   const [isSelectedMovieLoading, setIsSelectedMovieLoading] = useState(false);
-  const [selectedMovieError, setSelectedMovieError] = useState();
+  const [selectedMovieError, setSelectedMovieError] = useState(null);
+
+  const handleClearSelectedMovie = () => {
+    setSelectedMovie({})
+  }
 
   const handleSelectedMovieIdChange = (id) => {
     setSelectedMovieId(id);
   };
 
+ const handleRemoveWatchedMovie = (id) => {
+   setWatchedMovies((prevWatchedMovies) =>
+     prevWatchedMovies.filter((movie) => movie.id !== id)
+   );
+ };
+
+  //Selected Movies
   useEffect(() => {
     if (!selectedMovieId) return;
     const fetchSelectedMovie = async () => {
@@ -32,6 +43,7 @@ const Movie = ({ movieName, onMovieNumbersChange }) => {
         if (!data) throw new Error("Error fetching movie");
 
         setSelectedMovie({
+          id: data.imdbID,
           name: data.Title,
           releaseDate: data.Released,
           duration: data.Runtime,
@@ -52,6 +64,7 @@ const Movie = ({ movieName, onMovieNumbersChange }) => {
     fetchSelectedMovie();
   }, [selectedMovieId]);
 
+  //All movies
   useEffect(() => {
     
     const fetchMovies = async () => {
@@ -114,7 +127,11 @@ const Movie = ({ movieName, onMovieNumbersChange }) => {
         className={`${!selectedMovieId && "hidden"} lg:block`}
         isSelectedMovieLoading={isSelectedMovieLoading}
         selectedMovie={selectedMovie}
-        movies={movies}
+        selectedMovieError = {selectedMovieError}
+        watchedMovies={watchedMovies}
+        onClearSelectedMovie={handleClearSelectedMovie}
+        setWatchedMovies={setWatchedMovies}
+        onRemoveWatchedMovie={handleRemoveWatchedMovie}
       />
     </main>
   );
