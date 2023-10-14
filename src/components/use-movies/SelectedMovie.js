@@ -45,7 +45,7 @@ const SelectedMovie = ({
         <div className="flex flex-col gap-2">
           <h2 className="text-xl font-bold lg:text-2xl">{name}</h2>
           <p className="flex gap-2 items-center ">
-            {/* A NORMAL DOT WONT WORK, MUST USE THIS IEDNTIFIER */}
+            {/* A NORMAL DOT WONT WORK, MUST USE THIS IDENTIFIER */}
             {releaseDate} <span>&#8226;</span> {duration}
           </p>
           <p>{genre}</p>

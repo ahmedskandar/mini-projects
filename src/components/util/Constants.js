@@ -12,3 +12,7 @@ export const starConfig = {
   color: "white",
   activeColor: "yellow",
 };
+
+export const getCurrency = (amount, from, to) => {
+  return `https://api.frankfurter.app/latest?amount=${amount}&from=${from}&to=${to}`;
+};

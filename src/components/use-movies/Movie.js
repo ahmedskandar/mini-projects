@@ -70,12 +70,12 @@ const Movie = ({ movieName, onMovieNumbersChange }) => {
     const fetchMovies = async () => {
       setSelectedMovieId(null);
       setSelectedMovie({})
+      setError(null);
       if (movieName.length === 0) {
         setMovies([]);
         onMovieNumbersChange(0);
       }
       if (movieName.length < 3) return;
-      setError(null);
       setisLoading(true);
       //TRY-CATCH SHOULD BE INSIDE THE FUNCTION TO CATCH POTENTIAL ERRORS
       //AND ALSO FINALLY BLOCK MAY EXECUTE ASYNC AFTER THE FUNC HAD BEEN EXECUTED
@@ -86,7 +86,9 @@ const Movie = ({ movieName, onMovieNumbersChange }) => {
 
         const data = await res.json();
 
-        if (!data.Search)
+        // if (!data.Search)
+        //   throw new Error("No movies found, please search again");
+        if (data.Response === "False")
           throw new Error("No movies found, please search again");
         setMovies(
           data.Search.map((movie) => ({

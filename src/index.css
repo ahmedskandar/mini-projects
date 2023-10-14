@@ -5,10 +5,15 @@
 }
 
 
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+input, select {
+  @apply bg-amber-700 text-white rounded-md p-2 placeholder-white
+}
+}
 
 @layer components {
   .button-primary{

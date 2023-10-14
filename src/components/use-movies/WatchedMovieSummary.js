@@ -17,8 +17,6 @@ const avgDuration =
   const avgStarValue =
   starValuesArray.reduce((acc, num) => acc + num, 0) / watchedMovies.length;
 
-  console.log(avgDuration, avgStarValue)
-
   return (
     <div className="p-5 bg-white/20">
       <h2>MOVIES YOU WATCHED</h2>

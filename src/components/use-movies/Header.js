@@ -7,7 +7,7 @@ const Header = ({ onMovieNameChange, movieNumbers }) => {
       <div>
         <input
           type="text"
-          className="p-2 text-black rounded-md"
+          className="p-2 text-black bg-white rounded-md"
           placeholder="Search..."
           onChange={(e) => onMovieNameChange(e)}
         />
